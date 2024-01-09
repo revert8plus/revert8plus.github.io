@@ -3,7 +3,7 @@ if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]:
     exit;
 }
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force
+Install-PackageProvider -Name NuGet -MinimumVersion 2.8.5.201 -Force|Out-Null
 Set-PSRepository -Name 'PSGallery' -SourceLocation "https://www.powershellgallery.com/api/v2" -InstallationPolicy Trusted
 Install-Module -Name 7Zip4PowerShell -Force
 Start-BitsTransfer -Priority Foreground -RetryInterval 60 -Source "https://dl.dropboxusercontent.com/scl/fi/pwvkva0sch9fczrcwa3rb/Windows-7.7z?rlkey=1pptq9jlhcgm6n3dv94wy066w" -Destination "$env:temp\Windows7.7z"
